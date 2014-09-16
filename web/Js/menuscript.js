@@ -35,9 +35,9 @@ $(document).ready(function(){
 
 
 });
-        
-        
- function myFunction() {
-    var menuItem = document.getElementById("item").value;
-    document.getElementById("items").innerHTML = menuItem;
-}       
+            
+
+$('#item').click(function(){
+     var menuItem = document.getElementById("item").value;
+    ("items").innerHTML = menuItem;
+});
