@@ -4,6 +4,8 @@
     Author     : Travis
 --%>
 
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -35,8 +37,11 @@
             </li>
             <li><a href="#"><span>Dessert</span></a>
                 <ul>
+                  
+                  
                     <li name="item" onclick="myFunction()"><a href="#">Deep Fried Cheese Cake</a><span>12.99</span></li>
                     <li name="item" onclick="myFunction()"><a href="#">Banana Split</a><span>9.99</span></li>
+                            
                 </ul>
             </li>
             <li><a href="#"><span>Drink Menu</span></a>
