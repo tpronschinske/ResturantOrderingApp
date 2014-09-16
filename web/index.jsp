@@ -5,7 +5,9 @@
 --%>
 
 
- <%
+ <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%
      OrderingMenu orderMenu = new OrderingMenu();
  %>
                 
@@ -28,33 +30,45 @@
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
                 <% 
-                    for(int x = 0; x < orderMenu.getAppetizerMenu().length; x++){  
+     
+                    String [] items = orderMenu.getAppetizerMenu();
+     
+                    for(String item : items){  
+                        out.print("<li><a>");
+                        out.print(item);
+                        out.print("</a></li>");
+                    }
                       
                 %>
-                 
             </ul>
             </li>
             <li><a href="#"><span>Entree</span></a>
                 <ul>
-                     <% 
-                         for(int i = 0; i < orderMenu.getEntreMenu().length; i++){  
+                        <% 
+     
+                    String [] entreeItems = orderMenu.getEntreMenu();
+     
+                    for(String item : entreeItems){  
+                        out.print("<li><a>");
+                        out.print(item);
+                        out.print("</a></li>");
+                    }
                       
-                     %>
-                    <li name="item" onclick="myFunction()"><a href="#">Grilled & Blackened Tilapia</a><span name="price">14.50</span></li>
-                    <li name="item" onclick="myFunction()"><a href="#">New Your Strip Steak</a><span name="price">19.50</span></li>
-                    <li name="item" onclick="myFunction()"><a href="#">Rack of Lamb</a><span name="price">19.50</span></li>
+                %>       
                 </ul>
             </li>
             <li><a href="#"><span>Dessert</span></a>
                 <ul>
-                  <% 
-                         for(int z = 0; z < orderMenu.getDesertMenu().length; z++){  
+                <% 
+     
+                    String [] dessertItems = orderMenu.getDesertMenu();
+                    for(String item : dessertItems){  
+                        out.print("<li><a>");
+                        out.print(item);
+                        out.print("</a></li>");
+                    }
                       
-                     %>
-                  
-                    <li name="item" onclick="myFunction()"><a href="#">Deep Fried Cheese Cake</a><span name="price">12.99</span></li>
-                    <li name="item" onclick="myFunction()"><a href="#">Banana Split</a><span name="price">9.99</span></li>
-                            
+                %>         
                 </ul>
             </li>
             <li><a href="#"><span>Drink Menu</span></a>
@@ -77,13 +91,16 @@
             <li><a href="#"><span>Specials</span></a>
             <ul>
                 <% 
-                         for(int s = 0; s < orderMenu.getDesertMenu().length; s++){  
-                      
-                     %>
-                
-                <li name="item" onclick="myFunction()"><a href="#">Half Rack BBQ Ribs</a><span name="price">19.99</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Filet Mignon</a><span name="price">29.99</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Lemon Pepper Salmon</a><span name="price">19.99</span></li>
+                    double [] specialPrices = orderMenu.getSpecialPrices();
+                    String [] specialItems = orderMenu.getSpecialMenu();
+                    for(int item = 0; item < specialItems.length; item++){  
+                        out.print("<li><a>");
+                        out.print(specialItems[item]);
+                        out.print("</a></li>");
+                        
+                    }
+                    
+                %>
             </ul>
                 <li><a href="#"><h3>Items Ordered</h3></a></li>
 	</ul>
