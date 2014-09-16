@@ -32,7 +32,6 @@
                 <% 
      
                     String [] items = orderMenu.getAppetizerMenu();
-     
                     for(String item : items){  
                         out.print("<li><a>");
                         out.print(item);
@@ -44,10 +43,9 @@
             </li>
             <li><a href="#"><span>Entree</span></a>
                 <ul>
-                        <% 
+                <% 
      
                     String [] entreeItems = orderMenu.getEntreMenu();
-     
                     for(String item : entreeItems){  
                         out.print("<li><a>");
                         out.print(item);
@@ -70,24 +68,7 @@
                       
                 %>         
                 </ul>
-            </li>
-            <li><a href="#"><span>Drink Menu</span></a>
-            <ul>
-                <li>Beer</li>
-                <li id="item" name="item" onclick="myFunction()"><a href="#">Samuel Adams</a><span name="price">3.99</span></li>
-                <li id="item" name="item" onclick="myFunction()" ><a href="#">Bud Light</a><span name="price">3.99</span></li>
-                <li id="item" name="item" onclick="myFunction()"><a href="#">Miller Lite</a><span name="price">2.99</span></li>
-                <li id="item" name="item" onclick="myFunction()"><a href="#">Spotted Cow</a><span name="price">3.99</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Fat Tire</a><span name="price">4.99</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Corona</a><span name="price">4.99</span></li>
-                <li>Mixed Drinks</li>
-                <li name="item" onclick="myFunction()"><a href="#">Brandy Old Fashioned</a><span name="price">10.00</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Martini</a><span name="price">11.50</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Margarita</a><span name="price">9.50</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Bloody Mary</a><span name="price">8.99</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Mai Tai</a><span name="price">12.99</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Bahama Bomb</a><span name="price">8.00</span></li>
-            </ul>
+            </li>  
             <li><a href="#"><span>Specials</span></a>
             <ul>
                 <% 
@@ -96,17 +77,16 @@
                     for(int item = 0; item < specialItems.length; item++){  
                         out.print("<li><a>");
                         out.print(specialItems[item]);
-                        out.print("</a></li>");
-                        
+                        out.print("</a></li>");         
                     }
                     
                 %>
             </ul>
                 <li><a href="#"><h3>Items Ordered</h3></a></li>
 	</ul>
-            
-            <li id="items"></li>
 </div>
-
+            <p>&nbsp;</p>
+            <input id="submitOrder" type="submit" value="Submit Order">
+            
     </body>
 </html>
