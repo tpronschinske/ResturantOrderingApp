@@ -5,7 +5,11 @@
 --%>
 
 
-
+ <%
+     OrderingMenu orderMenu = new OrderingMenu();
+ %>
+                
+<%@page import="model.OrderingMenu"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,15 +25,21 @@
         <div id="cssmenu">           
 	<ul>
             <li><a href="#"><span>Menu</span></a></li>
-            <li><a href="#"><span>Appetizer</span></a>
+            <li><a href="#"><span>Appetizer</span></a>             
             <ul>
-                <li name="item" onclick="myFunction()"><a href="#">Blooming Onion</a><span name="price">7.50</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Pan Fried Calamari with Peppers and Chipotle Sauce</a><span name="price">11.50</span></li>
-                <li name="item" onclick="myFunction()"><a href="#">Mozzarella Sticks with Marinara Sauce</a><span name="price">8.50</span></li>
+                <% 
+                    for(int x = 0; x < orderMenu.getAppetizerMenu().length; x++){  
+                      
+                %>
+                 
             </ul>
             </li>
             <li><a href="#"><span>Entree</span></a>
                 <ul>
+                     <% 
+                         for(int i = 0; i < orderMenu.getEntreMenu().length; i++){  
+                      
+                     %>
                     <li name="item" onclick="myFunction()"><a href="#">Grilled & Blackened Tilapia</a><span name="price">14.50</span></li>
                     <li name="item" onclick="myFunction()"><a href="#">New Your Strip Steak</a><span name="price">19.50</span></li>
                     <li name="item" onclick="myFunction()"><a href="#">Rack of Lamb</a><span name="price">19.50</span></li>
@@ -37,7 +47,10 @@
             </li>
             <li><a href="#"><span>Dessert</span></a>
                 <ul>
-                  
+                  <% 
+                         for(int z = 0; z < orderMenu.getDesertMenu().length; z++){  
+                      
+                     %>
                   
                     <li name="item" onclick="myFunction()"><a href="#">Deep Fried Cheese Cake</a><span name="price">12.99</span></li>
                     <li name="item" onclick="myFunction()"><a href="#">Banana Split</a><span name="price">9.99</span></li>
@@ -63,6 +76,11 @@
             </ul>
             <li><a href="#"><span>Specials</span></a>
             <ul>
+                <% 
+                         for(int s = 0; s < orderMenu.getDesertMenu().length; s++){  
+                      
+                     %>
+                
                 <li name="item" onclick="myFunction()"><a href="#">Half Rack BBQ Ribs</a><span name="price">19.99</span></li>
                 <li name="item" onclick="myFunction()"><a href="#">Filet Mignon</a><span name="price">29.99</span></li>
                 <li name="item" onclick="myFunction()"><a href="#">Lemon Pepper Salmon</a><span name="price">19.99</span></li>
