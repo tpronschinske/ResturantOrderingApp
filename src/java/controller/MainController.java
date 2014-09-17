@@ -46,6 +46,8 @@ public class MainController extends HttpServlet {
         String dessertItem = request.getParameter("desert");
         String specialItem = request.getParameter("special");
    
+        
+        
         if(appetizerItem != null && !appetizerItem.isEmpty()){
             request.setAttribute("appetizerItem", appetizerItem);   
         }
@@ -61,7 +63,6 @@ public class MainController extends HttpServlet {
   
          response.sendRedirect("/order-page.jsp");
   
-          
         }
     } 
 

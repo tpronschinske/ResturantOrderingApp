@@ -5,8 +5,7 @@
 --%>
 
 
- <%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
+
 <%
      OrderingMenu orderMenu = new OrderingMenu();
  %>
@@ -23,14 +22,14 @@
         <link href="Css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
+        <form id="menuForm" name="menuForm" method="POST" action="MainConroller">
         <div id="cssmenu">           
 	<ul>
             <li><a href="#"><span>Menu</span></a></li>
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
                 
-                <form id="menuForm" name="menuForm" method="POST" action="MainConroller">
+                
                 <% 
                     String [] items = orderMenu.getAppetizerMenu();
                     for(String item : items){  
@@ -53,7 +52,7 @@
                     %>
                     <input type="checkbox" name="entree" value="<%= entree%>"/><%= entree%></input>
                     <%
-                            out.print("</a></li>");
+                            out.print("</li>");
                         }
 
                     %>       
@@ -68,7 +67,7 @@
                     %>
                     <input type="checkbox" name="dessert" value="<%= dessert%>"/><%= dessert%></input>
                     <%
-                            out.print("</a></li>");
+                            out.print("</li>");
                         }
 
                     %>         
@@ -83,7 +82,7 @@
                 %>
                 <input type="checkbox" name="special" value="<%= special%>"/><%= special%></input>
                 <%
-                        out.print("</a></li>");
+                        out.print("</li>");
                     }
 
                 %>
@@ -92,7 +91,9 @@
 	</ul>
 </div>
             <p>&nbsp;</p>
+            <center>
             <input id="submitOrder" type="submit" value="Submit Order">
-                </form> 
+            </center>
+          </form> 
     </body>
 </html>
