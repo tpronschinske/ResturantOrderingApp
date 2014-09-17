@@ -3,9 +3,6 @@
     Created on : Sep 11, 2014, 9:02:23 PM
     Author     : Travis
 --%>
-
-
-
 <%
      OrderingMenu orderMenu = new OrderingMenu();
  %>
@@ -22,14 +19,12 @@
         <link href="Css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form id="menuForm" name="menuForm" method="POST" action="MainConroller">
+        <form id="menuForm" name="menuForm" method="POST" action="MainController">
         <div id="cssmenu">           
 	<ul>
             <li><a href="#"><span>Menu</span></a></li>
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
-                
-                
                 <% 
                     String [] items = orderMenu.getAppetizerMenu();
                     for(String item : items){  

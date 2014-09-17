@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
-     private static final String RESULT_PAGE = "/order-page.jsp";
+     
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,8 +39,8 @@ public class MainController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+        response.setContentType("text/html");
+        String RESULT_PAGE = "order-page.jsp";
         String appetizerItem = request.getParameter("item");
         String entreeItem = request.getParameter("entree");
         String dessertItem = request.getParameter("desert");
@@ -61,7 +61,9 @@ public class MainController extends HttpServlet {
             request.setAttribute("specialItem", specialItem);   
         }
   
-         response.sendRedirect("/order-page.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("order-page.jsp");
+        view.forward(request,response);
+         response.sendRedirect("order-page.jsp");
   
         }
     } 
