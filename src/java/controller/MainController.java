@@ -8,6 +8,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,19 +47,14 @@ public class MainController extends HttpServlet {
         String dessertItem = request.getParameter("desert");
         String specialItem = request.getParameter("special");
    
+        List orderedItems = new ArrayList();
+        orderedItems.add(appetizerItem);
+        orderedItems.add(entreeItem);
+        orderedItems.add(dessertItem);
+        orderedItems.add(specialItem);
         
-        
-        if(appetizerItem != null && !appetizerItem.isEmpty()){
-            request.setAttribute("appetizerItem", appetizerItem);   
-        }
-         if(entreeItem != null && !entreeItem.isEmpty()){
-            request.setAttribute("entreeItem", entreeItem);   
-        }
-          if(dessertItem != null && !dessertItem.isEmpty()){
-            request.setAttribute("dessertItem", dessertItem);   
-        }
-           if(specialItem != null && !specialItem.isEmpty()){
-            request.setAttribute("specialItem", specialItem);   
+        if(appetizerItem != null && !appetizerItem.isEmpty() && entreeItem != null && !entreeItem.isEmpty() && dessertItem != null && !dessertItem.isEmpty() && specialItem != null && !specialItem.isEmpty()){
+            request.setAttribute("orderedItems", orderedItems);   
         }
   
             RequestDispatcher view = request.getRequestDispatcher("order-page.jsp");

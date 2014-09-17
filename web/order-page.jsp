@@ -14,40 +14,14 @@
     <body>
         <h1>Your Orders</h1>
        <%
-            Object obj = request.getAttribute("appetizerItem");
+            Object obj = request.getAttribute("Item Ordered");
             if(obj == null){
                 out.println("Sorry None Selected");
             }else {
                 out.println(obj.toString());
             }
          %>
-         
-            <%
-            Object objTwo = request.getAttribute("entreeItem");
-            if(objTwo == null){
-                out.println("Sorry No Calculation Available");
-            }else {
-                out.println(objTwo.toString());
-            }
-         %>
-         
-            <%
-            Object objThree= request.getAttribute("dessertItem");
-            if(objThree == null){
-                out.println("Sorry No Calculation Available");
-            }else {
-                out.println(objThree.toString());
-            }
-         %>
-         
-            <%
-            Object objFour = request.getAttribute("specialItem");
-            if(objFour == null){
-                out.println("Sorry No Calculation Available");
-            }else {
-                out.println(objFour.toString());
-            }
-         %>
+
         
     </body>
 </html>
