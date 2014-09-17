@@ -37,7 +37,7 @@
                         
                         out.print("<li>");
                 %>
-                <input type="checkbox" name="<%= item %>" value="<%= item %>"/><%= item %></input>
+                <input type="checkbox" name="item" value="<%= item %>"/><%= item %></input>
                 <%
                         out.print("</li>");
                      }
@@ -51,7 +51,7 @@
                         for (String entree : entreeItems) {
                             out.print("<li>");
                     %>
-                    <input type="checkbox" name="<%= entree%>" value="<%= entree%>"/><%= entree%></input>
+                    <input type="checkbox" name="entree" value="<%= entree%>"/><%= entree%></input>
                     <%
                             out.print("</a></li>");
                         }
@@ -66,7 +66,7 @@
                         for (String dessert : dessertItems) {
                             out.print("<li>");
                     %>
-                    <input type="checkbox" name="<%= dessert%>" value="<%= dessert%>"/><%= dessert%></input>
+                    <input type="checkbox" name="dessert" value="<%= dessert%>"/><%= dessert%></input>
                     <%
                             out.print("</a></li>");
                         }
@@ -81,7 +81,7 @@
                     for (String special : specialItems) {
                         out.print("<li>");
                 %>
-                <input type="checkbox" name="<%= special%>" value="<%= special%>"/><%= special%></input>
+                <input type="checkbox" name="special" value="<%= special%>"/><%= special%></input>
                 <%
                         out.print("</a></li>");
                     }

@@ -14,7 +14,7 @@
     <body>
         <h1>Your Orders</h1>
        <%
-            Object obj = request.getAttribute("appetizer");
+            Object obj = request.getAttribute("appetizerItem");
             if(obj == null){
                 out.println("Sorry None Selected");
             }else {
@@ -23,7 +23,7 @@
          %>
          
             <%
-            Object objTwo = request.getAttribute("entree");
+            Object objTwo = request.getAttribute("entreeItem");
             if(objTwo == null){
                 out.println("Sorry No Calculation Available");
             }else {
@@ -32,7 +32,7 @@
          %>
          
             <%
-            Object objThree= request.getAttribute("dessert");
+            Object objThree= request.getAttribute("dessertItem");
             if(objThree == null){
                 out.println("Sorry No Calculation Available");
             }else {
@@ -41,7 +41,7 @@
          %>
          
             <%
-            Object objFour = request.getAttribute("special");
+            Object objFour = request.getAttribute("specialItem");
             if(objFour == null){
                 out.println("Sorry No Calculation Available");
             }else {
