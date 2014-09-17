@@ -29,6 +29,8 @@
             <li><a href="#"><span>Menu</span></a></li>
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
+                
+                <form id="menuForm" name="menuForm" method="POST" action="MainConroller">
                 <% 
                     String [] items = orderMenu.getAppetizerMenu();
                     for(String item : items){  
@@ -86,10 +88,11 @@
 
                 %>
             </ul>
+            
 	</ul>
 </div>
             <p>&nbsp;</p>
-            <input id="submitOrder" type="submit" value="Submit Order" method="POST" action="MainController">
-            
+            <input id="submitOrder" type="submit" value="Submit Order">
+                </form> 
     </body>
 </html>

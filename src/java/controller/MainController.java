@@ -8,6 +8,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
+     private static final String RESULT_PAGE = "order-page.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,22 +41,29 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession();
-        ServletContext ctx = request.getServletContext();
-        String itemOrdered = request.getParameter("item");
+        String appetizerItem = request.getParameter("item");
+        String entreeItem = request.getParameter("entree");
+        String dessertItem = request.getParameter("desert");
+        String specialItem = request.getParameter("special");
         
+        if(appetizerItem != null && !appetizerItem.isEmpty()){
+            request.setAttribute("appetizer", appetizerItem);   
+        }
+         if(entreeItem != null && !entreeItem.isEmpty()){
+            request.setAttribute("entree", entreeItem);   
+        }
+          if(dessertItem != null && !dessertItem.isEmpty()){
+            request.setAttribute("dessert", dessertItem);   
+        }
+           if(specialItem != null && !specialItem.isEmpty()){
+            request.setAttribute("special", specialItem);   
+        }
   
-            String item = request.getParameter("item");
-            // Session scope is per user
-            session.setAttribute("item", item);
-            
-            // in JSP the ServletContext is referred to as 'application'
-            // and as applicatio-wide scope
-            if(itemOrdered != null && itemOrdered.length() > 0) {
-                ctx.setAttribute("itemOrdered", itemOrdered);
-            }
-            
-            response.sendRedirect("order-page.jsp");
+
+        RequestDispatcher view = request.getRequestDispatcher(RESULT_PAGE);
+        view.forward(request, response);
+  
+          response.sendRedirect(RESULT_PAGE);
         }
     } 
 

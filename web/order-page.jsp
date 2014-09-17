@@ -13,16 +13,41 @@
     </head>
     <body>
         <h1>Your Orders</h1>
-         <%
-            HttpSession s = request.getSession(true);
-            if(s == null) {
-                out.println("No session yet created");
-            } else if(s.isNew()) {
-                out.println("Session exits, but is new");
-            } else {
-                out.println("Session exists, but is old");
+       <%
+            Object obj = request.getAttribute("appetizer");
+            if(obj == null){
+                out.println("Sorry None Selected");
+            }else {
+                out.println(obj.toString());
             }
-        %>
+         %>
+         
+            <%
+            Object objTwo = request.getAttribute("entree");
+            if(objTwo == null){
+                out.println("Sorry No Calculation Available");
+            }else {
+                out.println(objTwo.toString());
+            }
+         %>
+         
+            <%
+            Object objThree= request.getAttribute("dessert");
+            if(objThree == null){
+                out.println("Sorry No Calculation Available");
+            }else {
+                out.println(objThree.toString());
+            }
+         %>
+         
+            <%
+            Object objFour = request.getAttribute("special");
+            if(objFour == null){
+                out.println("Sorry No Calculation Available");
+            }else {
+                out.println(objFour.toString());
+            }
+         %>
         
     </body>
 </html>
