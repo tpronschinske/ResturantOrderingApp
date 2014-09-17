@@ -30,63 +30,66 @@
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
                 <% 
-     
                     String [] items = orderMenu.getAppetizerMenu();
                     for(String item : items){  
-                        out.print("<li><a>");
-                        out.print(item);
-                        out.print("</a></li>");
-                    }
-                      
+                        
+                        out.print("<li>");
                 %>
+                <input type="checkbox" name="<%= item %>" value="<%= item %>"/><%= item %></input>
+                <%
+                        out.print("</li>");
+                     }
+                %> 
             </ul>
             </li>
             <li><a href="#"><span>Entree</span></a>
                 <ul>
-                <% 
-     
-                    String [] entreeItems = orderMenu.getEntreMenu();
-                    for(String item : entreeItems){  
-                        out.print("<li><a>");
-                        out.print(item);
-                        out.print("</a></li>");
-                    }
-                      
-                %>       
+                    <%
+                        String[] entreeItems = orderMenu.getEntreMenu();
+                        for (String entree : entreeItems) {
+                            out.print("<li>");
+                    %>
+                    <input type="checkbox" name="<%= entree%>" value="<%= entree%>"/><%= entree%></input>
+                    <%
+                            out.print("</a></li>");
+                        }
+
+                    %>       
                 </ul>
             </li>
             <li><a href="#"><span>Dessert</span></a>
                 <ul>
-                <% 
-     
-                    String [] dessertItems = orderMenu.getDesertMenu();
-                    for(String item : dessertItems){  
-                        out.print("<li><a>");
-                        out.print(item);
-                        out.print("</a></li>");
-                    }
-                      
-                %>         
+                    <%                   
+                        String[] dessertItems = orderMenu.getDesertMenu();
+                        for (String dessert : dessertItems) {
+                            out.print("<li>");
+                    %>
+                    <input type="checkbox" name="<%= dessert%>" value="<%= dessert%>"/><%= dessert%></input>
+                    <%
+                            out.print("</a></li>");
+                        }
+
+                    %>         
                 </ul>
             </li>  
             <li><a href="#"><span>Specials</span></a>
             <ul>
-                <% 
-                    double [] specialPrices = orderMenu.getSpecialPrices();
-                    String [] specialItems = orderMenu.getSpecialMenu();
-                    for(int item = 0; item < specialItems.length; item++){  
-                        out.print("<li><a>");
-                        out.print(specialItems[item]);
-                        out.print("</a></li>");         
+                <%                    
+                    String[] specialItems = orderMenu.getSpecialMenu();
+                    for (String special : specialItems) {
+                        out.print("<li>");
+                %>
+                <input type="checkbox" name="<%= special%>" value="<%= special%>"/><%= special%></input>
+                <%
+                        out.print("</a></li>");
                     }
-                    
+
                 %>
             </ul>
-                <li><a href="#"><h3>Items Ordered</h3></a></li>
 	</ul>
 </div>
             <p>&nbsp;</p>
-            <input id="submitOrder" type="submit" value="Submit Order">
+            <input id="submitOrder" type="submit" value="Submit Order" method="POST" action="MainController">
             
     </body>
 </html>
