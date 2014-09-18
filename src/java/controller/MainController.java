@@ -36,6 +36,7 @@ public class MainController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
         List<String> appetizerItem = new ArrayList(); 
