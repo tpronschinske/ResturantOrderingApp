@@ -13,14 +13,7 @@
     </head>
     <body>
         <h1>Your Orders</h1>
-       <%
-            Object obj = request.getAttribute("orderedItems");
-            if(obj == null){
-                out.println("Sorry None Selected");
-            }else {
-                out.println(obj.toString());
-            }
-         %>
+      ${orderedItems}
 
         
     </body>

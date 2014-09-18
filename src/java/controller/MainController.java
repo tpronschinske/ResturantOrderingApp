@@ -24,7 +24,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
      
-
+    
+    
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        
+    } // </editor-fold>
+  
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,9 +41,11 @@ public class MainController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+  
+  @Override
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
         List<String> appetizerItem = new ArrayList(); 
@@ -46,17 +55,17 @@ public class MainController extends HttpServlet {
         
         List<String> entreeItem = new ArrayList(); 
         for(int i = 0; i < 3; i++){
-            appetizerItem.add(request.getParameter("entree"+i));
+            entreeItem.add(request.getParameter("entree"+i));
         }
         
         List<String> dessertItem = new ArrayList(); 
         for(int i = 0; i < 3; i++){
-            appetizerItem.add(request.getParameter("desert"+i));
+            dessertItem.add(request.getParameter("desert"+i));
         }
       
         List<String> specialItem = new ArrayList(); 
         for(int i = 0; i < 3; i++){
-            appetizerItem.add(request.getParameter("special"+i));
+            specialItem.add(request.getParameter("special"+i));
         }
         
         List orderedItems = new ArrayList();
