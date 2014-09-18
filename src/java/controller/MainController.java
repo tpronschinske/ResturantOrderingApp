@@ -7,19 +7,15 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 /**
  *
@@ -68,13 +64,13 @@ public class MainController extends HttpServlet {
         orderedItems.add(dessertItem);
         orderedItems.add(specialItem);
         
-        if(appetizerItem != null && !appetizerItem.isEmpty() && entreeItem != null && !entreeItem.isEmpty() && dessertItem != null && !dessertItem.isEmpty() && specialItem != null && !specialItem.isEmpty()){
-            request.setAttribute("orderedItems", orderedItems);   
-        }
+        
+        request.setAttribute("orderedItems", orderedItems);   
+       
   
-            RequestDispatcher view = request.getRequestDispatcher("order-page.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("order-page.jsp");
         view.forward(request,response);
-         response.sendRedirect("order-page.jsp");
+         
   
         }
     } 
