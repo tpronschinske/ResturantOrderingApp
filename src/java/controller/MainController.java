@@ -42,11 +42,26 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
-        String appetizerItem = request.getParameter("item");
-        String entreeItem = request.getParameter("entree");
-        String dessertItem = request.getParameter("desert");
-        String specialItem = request.getParameter("special");
-   
+        List<String> appetizerItem = new ArrayList(); 
+        for(int i = 0; i < 3; i++){
+            appetizerItem.add(request.getParameter("item"+i));
+        }
+        
+        List<String> entreeItem = new ArrayList(); 
+        for(int i = 0; i < 3; i++){
+            appetizerItem.add(request.getParameter("entree"+i));
+        }
+        
+        List<String> dessertItem = new ArrayList(); 
+        for(int i = 0; i < 3; i++){
+            appetizerItem.add(request.getParameter("desert"+i));
+        }
+      
+        List<String> specialItem = new ArrayList(); 
+        for(int i = 0; i < 3; i++){
+            appetizerItem.add(request.getParameter("special"+i));
+        }
+        
         List orderedItems = new ArrayList();
         orderedItems.add(appetizerItem);
         orderedItems.add(entreeItem);
