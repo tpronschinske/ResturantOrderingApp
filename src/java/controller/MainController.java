@@ -8,6 +8,8 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,65 +25,49 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
-     
-    
-    
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
     } // </editor-fold>
-  
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-  
-  @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+
+    //DAO - Data Access Object
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
-        List<String> appetizerItem = new ArrayList(); 
-        for(int i = 0; i < 3; i++){
-            appetizerItem.add(request.getParameter("item"+i));
+
+        String[] appetizerItem = request.getParameterValues("item");
+        String[] entreeItem = request.getParameterValues("entree");
+        String[] dessertItem = request.getParameterValues("dessert");
+        String[] specialItem = request.getParameterValues("special");
+
+        List<String> orderedItems = new ArrayList<>();
+
+        orderedItems.add(Arrays.toString(appetizerItem));
+        orderedItems.add(Arrays.toString(entreeItem));
+        orderedItems.add(Arrays.toString(dessertItem));
+        orderedItems.add(Arrays.toString(specialItem));
+        for (Iterator<String> it = orderedItems.iterator(); it.hasNext();) {
+            String element = it.next();
+            if ("null".equals(element)) {
+                it.remove();
+            }
         }
+        String formatString = orderedItems.toString()
+        .replace(",", "")  //remove the commas
+        .replace("[", "")  //remove the right bracket
+        .replace("]", "")  //remove the left bracket
+        .trim();           //remove trailing spaces from partially initialized 
         
-        List<String> entreeItem = new ArrayList(); 
-        for(int i = 0; i < 3; i++){
-            entreeItem.add(request.getParameter("entree"+i));
-        }
-        
-        List<String> dessertItem = new ArrayList(); 
-        for(int i = 0; i < 3; i++){
-            dessertItem.add(request.getParameter("desert"+i));
-        }
-      
-        List<String> specialItem = new ArrayList(); 
-        for(int i = 0; i < 3; i++){
-            specialItem.add(request.getParameter("special"+i));
-        }
-        
-        List orderedItems = new ArrayList();
-        orderedItems.add(appetizerItem);
-        orderedItems.add(entreeItem);
-        orderedItems.add(dessertItem);
-        orderedItems.add(specialItem);
-        
-        
-        request.setAttribute("orderedItems", orderedItems);   
-       
-  
-        RequestDispatcher view = request.getRequestDispatcher("order-page.jsp");
-        view.forward(request,response);
-         
-  
-        }
-    } 
+        request.setAttribute("orderedItems", formatString);
+
+        RequestDispatcher view = request.getRequestDispatcher(RESULT_PAGE);
+        view.forward(request, response);
+
+    }
+}
 

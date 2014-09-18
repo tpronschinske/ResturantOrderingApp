@@ -27,14 +27,14 @@
             <ul>
                 <% 
                     String [] items = orderMenu.getAppetizerMenu();
-                    int i = 0;
+                 
                     for(String item : items){  
                        
                         out.print("<li>");
                 %>
-                <input type="checkbox" name="item<%= i %>" value="<%= item %>"/><%= item %></input>
+                <input type="checkbox" name="item" value="<%= item %>"/><%= item %></input>
                 <%
-                        i++;
+                     
                         out.print("</li>");
                      }
                 %> 
@@ -43,14 +43,14 @@
             <li><a href="#"><span>Entree</span></a>
                 <ul>
                     <%
-                        int x = 0;
+                       
                         String[] entreeItems = orderMenu.getEntreMenu();
                         for (String entree : entreeItems) {
                             out.print("<li>");
                     %>
-                    <input type="checkbox" name="entree<%= x%>" value="<%= entree%>"/><%= entree%></input>
+                    <input type="checkbox" name="entree" value="<%= entree%>"/><%= entree%></input>
                     <%
-                            x++;
+                         
                             out.print("</li>");
                         }
 
@@ -60,14 +60,14 @@
             <li><a href="#"><span>Dessert</span></a>
                 <ul>
                     <%                
-                        int s = 0;
+                      
                         String[] dessertItems = orderMenu.getDesertMenu();
                         for (String dessert : dessertItems) {
                             out.print("<li>");
                     %>
-                    <input type="checkbox" name="dessert<%= s%>" value="<%= dessert%>"/><%= dessert%></input>
+                    <input type="checkbox" name="dessert" value="<%= dessert%>"/><%= dessert%></input>
                     <%
-                            s++;
+                          
                             out.print("</li>");
                         }
 
@@ -77,14 +77,14 @@
             <li><a href="#"><span>Specials</span></a>
             <ul>
                 <%                    
-                    int z = 0;    
+                        
                     String[] specialItems = orderMenu.getSpecialMenu();
                     for (String special : specialItems) {
                         out.print("<li>");
                 %>
-                <input type="checkbox" name="special<%= z%>" value="<%= special%>"/><%= special%></input>
+                <input type="checkbox" name="special" value="<%= special%>"/><%= special%></input>
                 <%
-                        z++;
+                       
                         out.print("</li>");
                     }
 
