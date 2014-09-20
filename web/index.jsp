@@ -4,10 +4,10 @@
     Author     : Travis
 --%>
 <%
-     OrderingMenu orderMenu = new OrderingMenu();
+     MenuItems menuItems = new MenuItems();
  %>
                 
-<%@page import="model.OrderingMenu"%>
+<%@page import="model.MenuItems"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +19,16 @@
         <link href="Css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <div id="wrapper">
+        <div class="header">  
+            <h1>Le Cata</h1>
+        </div>
+        <div id="gradient-separater"></div>
+        <div id="bannerImage">
+            <img src="images/3_COUNTER-007.jpg.png" id="imageOne" alt=""/>
+            <img src="images/static.squarespace.com.png" id="imageTwo" alt=""/>
+        </div>
+         <div id="gradient-separater"></div>
         <form id="menuForm" name="menuForm" method="POST" action="MainController">
         <div id="cssmenu">           
 	<ul>
@@ -26,7 +36,7 @@
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
                 <% 
-                    String [] items = orderMenu.getAppetizerMenu();
+                    String [] items = menuItems.getAppetizerMenu();
                  
                     for(String item : items){  
                        
@@ -44,7 +54,7 @@
                 <ul>
                     <%
                        
-                        String[] entreeItems = orderMenu.getEntreMenu();
+                        String[] entreeItems = menuItems.getEntreMenu();
                         for (String entree : entreeItems) {
                             out.print("<li>");
                     %>
@@ -61,7 +71,7 @@
                 <ul>
                     <%                
                       
-                        String[] dessertItems = orderMenu.getDesertMenu();
+                        String[] dessertItems = menuItems.getDesertMenu();
                         for (String dessert : dessertItems) {
                             out.print("<li>");
                     %>
@@ -78,7 +88,7 @@
             <ul>
                 <%                    
                         
-                    String[] specialItems = orderMenu.getSpecialMenu();
+                    String[] specialItems = menuItems.getSpecialMenu();
                     for (String special : specialItems) {
                         out.print("<li>");
                 %>
@@ -93,10 +103,13 @@
             
 	</ul>
 </div>
-            <p>&nbsp;</p>
+        
             <center>
             <input id="submitOrder" type="submit" value="Submit Order">
             </center>
           </form> 
+         
+        </div>
+            <div class="footer"></div>
     </body>
 </html>

@@ -14,19 +14,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order Page</title>
         <link href="Css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script src="Js/menuscript.js" type="text/javascript"></script>
+        <link href="Css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wrapper">
-        <p class="header">&nbsp;
-        </p>
-        <h1>Your Order</h1>
+        <div class="header"><h1>Le Cata</h1></div>
+        <h2>Your Order</h2>
         <hr/>
+        
         <c:forEach var="item" items="${orderedItems}" varStatus="rowCount">
-          <br>${item}
+          ${orderedItems}
         </c:forEach>
-          
+       
+        <hr>
+        
+        <p>Total: $ ${billTotal}<br>
+        Tax:$ ${billTax}<br>
+        Bill Total Plus Tax:$ ${billTotalPlusTax}
+        </p>
+        
+        
+        
+        
           <p><a href="index.jsp">Back</a></p>
         </div>
-        <p id="footer">&nbsp;
+        <p>&nbsp;</p>
+    
+            <div class="footer"></div>
 </body>
 </html>

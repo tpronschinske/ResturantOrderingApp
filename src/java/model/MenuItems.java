@@ -9,7 +9,7 @@ package model;
  *
  * @author Travis
  */
-public class OrderingMenu {
+public class MenuItems {
     
     public String [] appetizerMenu = {"Blooming Onion $9.50","Calamari $10.50","Mozzarella Sticks $12.50"};
     public String [] entreMenu = {"Grilled & Blackened Tilapia $19.99","New Your Strip Steak $22.45","Rack of Lamb $17.50"};
@@ -17,7 +17,7 @@ public class OrderingMenu {
     public String [] specialMenu = {"Half Rack BBQ Ribs $19.99","Filet Mignon $22.45","Lemon Pepper Salmon $24.50"};
 
 
-    public OrderingMenu() {
+    public MenuItems() {
     }
 
     public String[] getAppetizerMenu() {
