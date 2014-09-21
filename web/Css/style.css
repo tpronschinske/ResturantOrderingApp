@@ -88,6 +88,10 @@ h1 {
     margin: 0 auto;
 }
 
+#inputBox{
+    width: 225px;
+}
+
 #cssmenu,
 #cssmenu ul,
 #cssmenu li,

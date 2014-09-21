@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BillCalculator;
+import model.TipCalculator;
 
 
 /**
@@ -41,61 +41,48 @@ public class MainController extends HttpServlet {
 
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
-        double finalBill = 0;
+     //  double finalBill = 0.0;
         
+        /* retrieves the items selected */
         String[] appetizerItem = request.getParameterValues("item");
         String[] entreeItem = request.getParameterValues("entree");
         String[] dessertItem = request.getParameterValues("dessert");
         String[] specialItem = request.getParameterValues("special");
 
+        /* adds items to an array */
         List<String> orderedItems = new ArrayList<>();
-        
         orderedItems.add(Arrays.toString(appetizerItem));
         orderedItems.add(Arrays.toString(entreeItem));
         orderedItems.add(Arrays.toString(dessertItem));
         orderedItems.add(Arrays.toString(specialItem));
+        
+        /* removes null */
         for (Iterator<String> it = orderedItems.iterator(); it.hasNext();) {
             String element = it.next();
             if ("null".equals(element)) {
                 it.remove();
             }
         }
+        /* formats array items - used for output on the order - page */
         String formatString = orderedItems.toString()
         .replace(",", "<br>")  //remove the commas
         .replace("[", "")  //remove the right bracket
         .replace("]", "")  //remove the left bracket
         .trim();           //remove trailing spaces from partially initialized 
         
-         String formatForBill = orderedItems.toString()
-        .replace(",", "")  //remove the commas
-        .replace("[", "")  //remove the right bracket
-        .replace("]", "")  //remove the left bracket
-        .trim();           //remove trailing spaces from partially initialized 
-        
-        List<Double> bill = new ArrayList<>();
-        String billItems = formatForBill;
-        String expression = "(?!=\\d\\.\\d\\.)([\\d.]+)";
-        Matcher matcher = Pattern.compile(expression).matcher(billItems);
-        while (matcher.find()) {
-            String doubleAsString = matcher.group();
-            finalBill = Double.valueOf(doubleAsString);
-            bill.add(finalBill); 
-        }
-        double calculateBill = 0.0;
-        for(int i = 0; i < bill.size(); i++){
-            calculateBill = calculateBill + bill.get(i);         
-        }
-        double finalCalculateBillTotal = (double)(Math.round(calculateBill * 100))/ 100.00;
-        double calculateBillTax = (calculateBill * 1.055) - calculateBill;
-        double roundedTax = (double)(Math.round(calculateBillTax * 100))/ 100.00;
-        double billTotalPlusTax = (double)(Math.round((finalCalculateBillTotal + roundedTax) * 100)) / 100.00;
-        
+        BillCalculator billCalculator = new BillCalculator(orderedItems, formatString);
+        /* setting attributes for the page */
         request.setAttribute("orderedItems", formatString);
-        request.setAttribute("billTotal", finalCalculateBillTotal);
-        request.setAttribute("billTax", roundedTax);
-        request.setAttribute("billTotalPlusTax", billTotalPlusTax);
+        request.setAttribute("billTotal", billCalculator.getFinalCalculateBillTotal());
+        request.setAttribute("billTax", billCalculator.getRoundedTax());
+        request.setAttribute("billTotalPlusTax", billCalculator.getBillTotalPlusTax());
         
-
+        
+        String tip = request.getParameter("tip");
+        if(tip != null && !tip.isEmpty()){
+            TipCalculator tc = new TipCalculator(tip);
+            request.setAttribute("totalPlusTip", tc.getTotalPlusTip());
+        }
         RequestDispatcher view = request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);
 

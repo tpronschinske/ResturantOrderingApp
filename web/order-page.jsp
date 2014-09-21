@@ -35,9 +35,13 @@
         Bill Total Plus Tax:$ ${billTotalPlusTax}
         </p>
         
-        
-        
-        
+        <form id="tipForm" name="tipForm" method="POST" action="MainController">
+         Please Enter Tip Amount:<input id ="inputBox" type="text" name="tip"/><br />
+        <input id="submitTip" type="submit" value="Submit Tip">
+            <form>
+                
+                <p>Total Plus Tip:$ ${totalPlusTip}       
+                
           <p><a href="index.jsp">Back</a></p>
         </div>
         <p>&nbsp;</p>
