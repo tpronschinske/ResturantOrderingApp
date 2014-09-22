@@ -37,14 +37,11 @@
             <ul>
                 <% 
                     String [] items = menuItems.getAppetizerMenu();
-                 
                     for(String item : items){  
-                       
                         out.print("<li>");
                 %>
                 <input type="checkbox" name="item" value="<%= item %>"/><%= item %></input>
                 <%
-                     
                         out.print("</li>");
                      }
                 %> 
@@ -59,11 +56,9 @@
                             out.print("<li>");
                     %>
                     <input type="checkbox" name="entree" value="<%= entree%>"/><%= entree%></input>
-                    <%
-                         
+                    <%                         
                             out.print("</li>");
                         }
-
                     %>       
                 </ul>
             </li>
@@ -76,11 +71,9 @@
                             out.print("<li>");
                     %>
                     <input type="checkbox" name="dessert" value="<%= dessert%>"/><%= dessert%></input>
-                    <%
-                          
+                    <%                          
                             out.print("</li>");
                         }
-
                     %>         
                 </ul>
             </li>  

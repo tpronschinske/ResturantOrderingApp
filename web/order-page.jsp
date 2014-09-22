@@ -14,10 +14,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order Page</title>
         <link href="Css/style.css" rel="stylesheet" type="text/css"/>
-        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script src="Js/menuscript.js" type="text/javascript"></script>
-        <link href="Css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <script type="text/javascript">
+        function calculateTip() {
+            var tip = $('#tipBox').val();
+            var bill = $('#bill').val();
+            var total_bill = Number(bill) + Number(tip);
+            $('#totalPlusTip').val(total_bill.toFixed(2));
+           }
+          $('#tipForm').submit( calculateTip );
+        </script>
     </head>
+    
     <body>
         <div id="wrapper">
         <div class="header"><h1>Le Cata</h1></div>
@@ -30,22 +38,23 @@
        
         <hr>
         
-        <p>Total: $ ${billTotal}<br>
-        Tax:$ ${billTax}<br>
-        Bill Total Plus Tax:$ ${billTotalPlusTax}
+        <p>Total: $ ${billTotal}</p>
+        <p>Tax:$ ${billTax}</p>
+        <p>Bill Total Plus Tax:$ <span id="bill">${billTotalPlusTax}</span>
         </p>
         
-        <form id="tipForm" name="tipForm" method="POST" action="MainController">
-         Please Enter Tip Amount:<input id ="inputBox" type="text" name="tip"/><br />
-        <input id="submitTip" type="submit" value="Submit Tip">
-            <form>
+        <form id="tipForm" name="tipForm">
+         Please Enter Tip Amount:<input id ="tipBox" type="text"/><br />
+         <input type="submit" value="Submit Tip"/>
+            
+                <p>Total Plus Tip:$</p>     
                 
-                <p>Total Plus Tip:$ ${totalPlusTip}       
-                
+                <p id="totalPlusTip"></p>
+            </form>    
+        
+      
           <p><a href="index.jsp">Back</a></p>
         </div>
-        <p>&nbsp;</p>
-    
             <div class="footer"></div>
 </body>
 </html>

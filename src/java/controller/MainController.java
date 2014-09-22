@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.BillCalculator;
-import model.TipCalculator;
+
 
 
 /**
@@ -41,6 +41,7 @@ public class MainController extends HttpServlet {
 
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
+        HttpSession session = request.getSession();
      //  double finalBill = 0.0;
         
         /* retrieves the items selected */
@@ -72,19 +73,15 @@ public class MainController extends HttpServlet {
         
         BillCalculator billCalculator = new BillCalculator(orderedItems, formatString);
         /* setting attributes for the page */
-        request.setAttribute("orderedItems", formatString);
-        request.setAttribute("billTotal", billCalculator.getFinalCalculateBillTotal());
-        request.setAttribute("billTax", billCalculator.getRoundedTax());
-        request.setAttribute("billTotalPlusTax", billCalculator.getBillTotalPlusTax());
+        session.setAttribute("orderedItems", formatString);
+        session.setAttribute("billTotal", billCalculator.getFinalCalculateBillTotal());
+        session.setAttribute("billTax", billCalculator.getRoundedTax());
+        session.setAttribute("billTotalPlusTax", billCalculator.getBillTotalPlusTax());
         
+
+      
+        response.sendRedirect(RESULT_PAGE);
         
-        String tip = request.getParameter("tip");
-        if(tip != null && !tip.isEmpty()){
-            TipCalculator tc = new TipCalculator(tip);
-            request.setAttribute("totalPlusTip", tc.getTotalPlusTip());
-        }
-        RequestDispatcher view = request.getRequestDispatcher(RESULT_PAGE);
-        view.forward(request, response);
 
     }
     
