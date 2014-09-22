@@ -93,7 +93,20 @@
 
                 %>
             </ul>
-            
+            <li><a href="#"><span>Drinks</span></a>             
+            <ul>
+                <% 
+                    String [] drinks = menuItems.getDrinkMenu();
+                    for(String drink : drinks){  
+                        out.print("<li>");
+                %>
+                <input type="checkbox" name="drink" value="<%= drink %>"/><%= drink %></input>
+                <%
+                        out.print("</li>");
+                     }
+                %> 
+            </ul>
+            </li>
 	</ul>
 </div>
         

@@ -15,6 +15,7 @@ public class MenuItems {
     public String [] entreMenu = {"Grilled & Blackened Tilapia $19.99","New Your Strip Steak $22.45","Rack of Lamb $17.50","Chicken Caesar Salad $8.50","Cheeseburger $8.95","Swiss-Bacon Burger $9.55","Grilled Chicken Sandwich $8.75","The Prospect Ave Sandwich $9.50"};
     public String [] desertMenu = {"Deep Fried Cheese Cake $9.99","Banana Split $12.45","Deep Fried Ice Cream $5.00","Chocolate Mousse Cake $5.95","Turtle CheeseCake $4.50"};
     public String [] specialMenu = {"Half Rack BBQ Ribs $19.99","Filet Mignon $22.45","Lemon Pepper Salmon $24.50"};
+    public String [] drinkMenu = {"Water $0.00","Pepsi $1.50","Sprite $1.50","Diet Pepsi $4.50","Miller Lite $3.50","Bud Light $3.00","Blue Moon $4.50","Fat Tire $4.00","Bloody Mary $6.50","Martini $7.50","Manhatten $4.50","Old Fashion $5.50"};
 
 
     public MenuItems() {
@@ -50,6 +51,14 @@ public class MenuItems {
 
     public void setSpecialMenu(String[] specialMenu) {
         this.specialMenu = specialMenu;
+    }
+
+    public String[] getDrinkMenu() {
+        return drinkMenu;
+    }
+
+    public void setDrinkMenu(String[] drinkMenu) {
+        this.drinkMenu = drinkMenu;
     }
 
 

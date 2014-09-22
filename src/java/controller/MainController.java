@@ -49,13 +49,14 @@ public class MainController extends HttpServlet {
         String[] entreeItem = request.getParameterValues("entree");
         String[] dessertItem = request.getParameterValues("dessert");
         String[] specialItem = request.getParameterValues("special");
-
+        String[] drinkItem = request.getParameterValues("drink");
         /* adds items to an array */
         List<String> orderedItems = new ArrayList<>();
         orderedItems.add(Arrays.toString(appetizerItem));
         orderedItems.add(Arrays.toString(entreeItem));
         orderedItems.add(Arrays.toString(dessertItem));
         orderedItems.add(Arrays.toString(specialItem));
+        orderedItems.add(Arrays.toString(drinkItem));
         
         /* removes null */
         for (Iterator<String> it = orderedItems.iterator(); it.hasNext();) {
