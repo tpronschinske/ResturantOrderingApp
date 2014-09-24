@@ -17,6 +17,11 @@ public class MenuItems {
     public String [] specialMenu = {"Half Rack BBQ Ribs $19.99","Filet Mignon $22.45","Lemon Pepper Salmon $24.50"};
     public String [] drinkMenu = {"Water $0.00","Pepsi $1.50","Sprite $1.50","Diet Pepsi $4.50","Miller Lite $3.50","Bud Light $3.00","Blue Moon $4.50","Fat Tire $4.00","Bloody Mary $6.50","Martini $7.50","Manhatten $4.50","Old Fashion $5.50"};
 
+    public double[] appetizerPrices = {};
+    public double[] entrePrices = {};
+    public double[] desertPrices = {};
+    public double[] specialPrices = {};
+    public double[] drinkPrices = {};
 
     public MenuItems() {
     }
@@ -59,6 +64,46 @@ public class MenuItems {
 
     public void setDrinkMenu(String[] drinkMenu) {
         this.drinkMenu = drinkMenu;
+    }
+
+    public double[] getAppetizerPrices() {
+        return appetizerPrices;
+    }
+
+    public void setAppetizerPrices(double[] appetizerPrices) {
+        this.appetizerPrices = appetizerPrices;
+    }
+
+    public double[] getEntrePrices() {
+        return entrePrices;
+    }
+
+    public void setEntrePrices(double[] entrePrices) {
+        this.entrePrices = entrePrices;
+    }
+
+    public double[] getDesertPrices() {
+        return desertPrices;
+    }
+
+    public void setDesertPrices(double[] desertPrices) {
+        this.desertPrices = desertPrices;
+    }
+
+    public double[] getSpecialPrices() {
+        return specialPrices;
+    }
+
+    public void setSpecialPrices(double[] specialPrices) {
+        this.specialPrices = specialPrices;
+    }
+
+    public double[] getDrinkPrices() {
+        return drinkPrices;
+    }
+
+    public void setDrinkPrices(double[] drinkPrices) {
+        this.drinkPrices = drinkPrices;
     }
 
 
