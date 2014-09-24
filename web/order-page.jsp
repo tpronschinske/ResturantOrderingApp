@@ -22,7 +22,7 @@
             var total_bill = Number(bill) + Number(tip);
             $('#totalPlusTip').val(total_bill.toFixed(2));
            }
-          $('#tipForm').submit( calculateTip );
+          $('#tipForm').submit(calculateTip);
         </script>
     </head>
     
