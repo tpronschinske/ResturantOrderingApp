@@ -6,7 +6,7 @@
 
 package model;
 
-import java.awt.MenuItem;
+
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface IMenuItemDAO {
    
-    public abstract void save(MenuItem mi) throws DataAccessException;
+    public abstract void save(MenuItem menu) throws DataAccessException;
     
     public abstract void deleteMenuItem(MenuItem menuItem) throws DataAccessException;
     

@@ -23,7 +23,7 @@ import java.util.Map;
  *
  * @author Travis
  */
-public class DatabaseCommands implements DatabaseAccess {
+public class DB_MySQL implements DatabaseAccess {
     private Connection conn;
 
 	/**
@@ -31,7 +31,7 @@ public class DatabaseCommands implements DatabaseAccess {
 	 * immediately open a connection to the database. When the
 	 * connection is needed, call the openConnection method.
 	 */
-	public DatabaseCommands() {}
+	public DB_MySQL() {}
 	
 	
 
@@ -365,6 +365,17 @@ public class DatabaseCommands implements DatabaseAccess {
 //		System.out.println(finalSQL);
 		return conn_loc.prepareStatement(finalSQL);
 	}
+        
+        public static void main(String[] args) throws Exception {
+            DB_MySQL db = new DB_MySQL();
+            db.openConnection("com.mysql.jdbc.Driver", 
+                    "jdbc:mysql://localhost:3306/restaurant", 
+                    "root", "admin");
+            
+            List records = db.findRecords("select * from menu_item", true);
+            
+            System.out.println(records);
+        }
         
 
 
