@@ -32,12 +32,6 @@ public class BillCalculator {
         .replace("]", "")  //remove the left bracket
         .trim();         
         
-        for (Iterator<String> it = list.iterator(); it.hasNext();) {
-            String element = it.next();
-            if ("null".equals(element)) {
-                it.remove();
-            }
-        }
         
         List<Double> bill = new ArrayList<>();
         String billItems = formatForBill;

@@ -10,7 +10,7 @@ package model;
  *
  * @author Travis
  */
-class DataAccessException extends Exception {
+public class DataAccessException extends Exception {
        public DataAccessException(String msg) {
         super(msg);
     }

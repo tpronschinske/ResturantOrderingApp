@@ -3,11 +3,17 @@
     Created on : Sep 11, 2014, 9:02:23 PM
     Author     : Travis
 --%>
+
+<%@page import="model.MenuItem"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="model.RestaurantMenuService"%>
+<%@page import="controller.MainController"%>
 <%
-     MenuItems menuItems = new MenuItems();
+     RestaurantMenuService ms = new RestaurantMenuService();
  %>
                 
-<%@page import="model.MenuItems"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,29 +42,25 @@
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
                 <% 
-                    String [] items = menuItems.getAppetizerMenu();
-                    for(String item : items){  
-                        out.print("<li>");
+ 
+                     //   out.print("<li>");
                 %>
-                <input type="checkbox" name="item" value="<%= item %>"/><%= item %></input>
+                <input type="checkbox" name="item" value="<%= 0 %>"/><%= 0 %></input>
                 <%
-                        out.print("</li>");
-                     }
+                     //   out.print("</li>");
+                     
                 %> 
             </ul>
             </li>
             <li><a href="#"><span>Entree</span></a>
                 <ul>
                     <%
-                       
-                        String[] entreeItems = menuItems.getEntreMenu();
-                        for (String entree : entreeItems) {
-                            out.print("<li>");
+                       //     out.print("<li>");
                     %>
-                    <input type="checkbox" name="entree" value="<%= entree%>"/><%= entree%></input>
+                    <input type="checkbox" name="entree" value="<%= 0%>"/><%= 0%></input>
                     <%                         
-                            out.print("</li>");
-                        }
+                        //    out.print("</li>");
+                        
                     %>       
                 </ul>
             </li>
@@ -66,14 +68,14 @@
                 <ul>
                     <%                
                       
-                        String[] dessertItems = menuItems.getDesertMenu();
-                        for (String dessert : dessertItems) {
-                            out.print("<li>");
+                        
+                        
+                         //   out.print("<li>");
                     %>
-                    <input type="checkbox" name="dessert" value="<%= dessert%>"/><%= dessert%></input>
+                    <input type="checkbox" name="dessert" value="<%= 0%>"/><%= 0%></input>
                     <%                          
-                            out.print("</li>");
-                        }
+                          //  out.print("</li>");
+                        
                     %>         
                 </ul>
             </li>  
@@ -81,29 +83,29 @@
             <ul>
                 <%                    
                         
-                    String[] specialItems = menuItems.getSpecialMenu();
-                    for (String special : specialItems) {
-                        out.print("<li>");
+                    
+                   
+                      //  out.print("<li>");
                 %>
-                <input type="checkbox" name="special" value="<%= special%>"/><%= special%></input>
+                <input type="checkbox" name="special" value="<%= 0%>"/><%= 0%></input>
                 <%
                        
-                        out.print("</li>");
-                    }
+                      //  out.print("</li>");
+                    
 
                 %>
             </ul>
             <li><a href="#"><span>Drinks</span></a>             
             <ul>
                 <% 
-                    String [] drinks = menuItems.getDrinkMenu();
-                    for(String drink : drinks){  
-                        out.print("<li>");
+                    
+                    
+                       // out.print("<li>");
                 %>
-                <input type="checkbox" name="drink" value="<%= drink %>"/><%= drink %></input>
+                <input type="checkbox" name="drink" value="<%= 0 %>"/><%= 0 %></input>
                 <%
-                        out.print("</li>");
-                     }
+                       // out.print("</li>");
+                     
                 %> 
             </ul>
             </li>
