@@ -24,4 +24,6 @@ public interface IMenuItemDAO {
     public abstract DatabaseAccess getDb();
 
     public abstract void setDb(DatabaseAccess db);
+
+//    public MenuItem getMenuItemsByCategory(String category)throws DataAccessException;
 }

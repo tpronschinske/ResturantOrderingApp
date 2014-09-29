@@ -15,20 +15,23 @@ public class MenuItem {
     private Long id;
     private String itemName;
     private String itemPrice;
+    private String category;
 
     
     public MenuItem() {
     }
     
-    public MenuItem(String itemName, String itemPrice) {
+    public MenuItem(String itemName, String itemPrice, String category) {
         this.itemPrice = itemPrice;
         this.itemName = itemName;
+        this.category = category;
     }
 
-    public MenuItem(Long id, String itemName, String itemPrice) {
+    public MenuItem(Long id, String itemName, String itemPrice, String category) {
         this.id = id;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
+        this.category = category;
     }
     
     public Long getId() {
@@ -54,6 +57,16 @@ public class MenuItem {
     public void setItemPrice(String itemPrice) {
         this.itemPrice = itemPrice;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+    
 
     @Override
     public int hashCode() {

@@ -9,6 +9,7 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -50,14 +51,15 @@ public class MenuItemDAO implements IMenuItemDAO {
         this.openLocalDbConnection();
         
         String tableName = "MENUITEMS";
-        List<String> fieldNames = new ArrayList<>();
+        List<String> fieldNames = new ArrayList<String>();
         fieldNames.add("ITEMNAME");
         fieldNames.add("ITEMPRICE");
+//        fieldNames.add("CATEGORY");
 
         List fieldValues = new ArrayList();
-        fieldValues.add(menu.getId());
         fieldValues.add(menu.getItemName());
         fieldValues.add(menu.getItemPrice());
+//        fieldValues.add(menu.getCategory());
 
         try {
             // if the id is null, it's a new record, else it's an update
@@ -93,7 +95,7 @@ public class MenuItemDAO implements IMenuItemDAO {
     public List<MenuItem> getAllMenuItems() throws DataAccessException {
         openLocalDbConnection();      
         List<Map> rawData = new ArrayList<>();
-        List<MenuItem> records = new ArrayList<>();
+        List<MenuItem> records = new ArrayList<MenuItem>();
         try {
             rawData = db.findRecords(FIND_ALL_MENUITEMS, true);
         } catch (SQLException e1) {
@@ -104,26 +106,54 @@ public class MenuItemDAO implements IMenuItemDAO {
         }
 
         MenuItem menuItem = null;
-     
-
         // Translate List<Map> into List<MenuItem>
         for (Map m : rawData) {
             menuItem = new MenuItem();
             
-            String id = m.get("ID").toString();
+            String id = m.get("menu_item_id").toString();
             menuItem.setId(new Long(id));
             
-            String itemName = m.get("ITEMNAME").toString();
+            String itemName = m.get("item_name").toString();
             menuItem.setItemName(itemName);
             
-            String price = m.get("PRICE").toString();
+            String price = m.get("price").toString();
             menuItem.setItemPrice(price);
      
+//            String category = m.get("category").toString();
+//            menuItem.setItemPrice(category);
+            
             records.add(menuItem);
         }
 
         return records;
     }
+    
+//      @Override
+//    public MenuItem getMenuItemsByCategory(String category)throws DataAccessException {
+//       this.openLocalDbConnection();
+//        
+//        Map rec;
+//        try {
+//            rec = db.getRecordByID("MENUITEMS", "CATEGORY", category, true);
+//        } catch (SQLException e1) {
+//            throw new DataAccessException(e1.getMessage(), e1);
+//
+//        } catch (Exception e2) {
+//            throw new DataAccessException(e2.getMessage(), e2);
+//        }
+//        
+//        MenuItem menuItem = new MenuItem();
+//        menuItem.setId(new Long(rec.get("menu_item_id").toString()));
+//        menuItem.setItemName(rec.get("item_name").toString());
+//        menuItem.setItemPrice(rec.get("price").toString());
+//        menuItem.setCategory(rec.get("category").toString());
+//        
+//
+//        return menuItem;
+//    }
+//    
+    
+
 
     @Override
     public DatabaseAccess getDb() {
@@ -135,20 +165,15 @@ public class MenuItemDAO implements IMenuItemDAO {
         this.db = db;
     }
     
-    // Test harness only -- remove in production version
-    public static void main(String[] args) throws Exception {
-        MenuItemDAO dao = new MenuItemDAO (new DB_MySQL());
-
-        // Test get all menu items...
-        List<MenuItem> records = dao.getAllMenuItems();
-
-        System.out.println("Found Menu records...\n");
-          for (MenuItem menuItem : records) {
-            System.out.println(menuItem);
-        }
-
-
-
-    }
-    
+//    public static void main(String[] args) throws Exception {
+//        MenuItemDAO dao = new MenuItemDAO (new DB_MySQL());
+//
+//        // Test get all menu items...
+//        List<MenuItem> records = dao.getAllMenuItems();
+//
+//        System.out.println("Found Menu records...\n");
+//          for (MenuItem menuItem : records) {
+//            System.out.println(menuItem);
+//        }
+//    }
 }
