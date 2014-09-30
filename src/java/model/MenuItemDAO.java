@@ -54,12 +54,12 @@ public class MenuItemDAO implements IMenuItemDAO {
         List<String> fieldNames = new ArrayList<String>();
         fieldNames.add("ITEMNAME");
         fieldNames.add("ITEMPRICE");
-//        fieldNames.add("CATEGORY");
+        fieldNames.add("CATEGORY");
 
         List fieldValues = new ArrayList();
         fieldValues.add(menu.getItemName());
         fieldValues.add(menu.getItemPrice());
-//        fieldValues.add(menu.getCategory());
+        fieldValues.add(menu.getCategory());
 
         try {
             // if the id is null, it's a new record, else it's an update
@@ -119,15 +119,14 @@ public class MenuItemDAO implements IMenuItemDAO {
             String price = m.get("price").toString();
             menuItem.setItemPrice(price);
      
-//            String category = m.get("category").toString();
-//            menuItem.setItemPrice(category);
+            String category = m.get("category").toString();
+            menuItem.setCategory(category);
             
             records.add(menuItem);
         }
 
         return records;
     }
-    
 //      @Override
 //    public MenuItem getMenuItemsByCategory(String category)throws DataAccessException {
 //       this.openLocalDbConnection();
@@ -152,9 +151,6 @@ public class MenuItemDAO implements IMenuItemDAO {
 //        return menuItem;
 //    }
 //    
-    
-
-
     @Override
     public DatabaseAccess getDb() {
         return this.db;
@@ -165,15 +161,15 @@ public class MenuItemDAO implements IMenuItemDAO {
         this.db = db;
     }
     
-//    public static void main(String[] args) throws Exception {
-//        MenuItemDAO dao = new MenuItemDAO (new DB_MySQL());
-//
-//        // Test get all menu items...
-//        List<MenuItem> records = dao.getAllMenuItems();
-//
-//        System.out.println("Found Menu records...\n");
-//          for (MenuItem menuItem : records) {
-//            System.out.println(menuItem);
-//        }
-//    }
+    public static void main(String[] args) throws Exception {
+        MenuItemDAO dao = new MenuItemDAO (new DB_MySQL());
+
+        // Test get all menu items...
+        List<MenuItem> records = dao.getAllMenuItems();
+
+        System.out.println("Found Menu records...\n");
+          for (MenuItem menuItem : records) {
+            System.out.println(menuItem);
+        }
+    }
 }

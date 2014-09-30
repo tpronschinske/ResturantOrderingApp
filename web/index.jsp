@@ -41,14 +41,23 @@
             <li><a href="#"><span>Menu</span></a></li>
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
-                <% 
- 
-                     //   out.print("<li>");
-                %>
-                <input type="checkbox" name="item" value="<%= 0 %>"/><%= 0 %></input>
                 <%
-                     //   out.print("</li>");
-                     
+                    RestaurantMenuService rms = new RestaurantMenuService();
+
+                    List<String> orderedItems = new ArrayList<>();
+
+                    orderedItems.add(rms.getAllMenuItems().toString());
+
+                    /* formats array items - used for output on the order - page */
+                    String formatItemString = orderedItems.toString();         
+                    //   out.print("<li>");
+                    for (int i = 0; i < formatItemString.length(); i++) {
+                        out.print("<li>");
+                %>
+                <input type="checkbox" name="item" value="<%= formatItemString %>"/><%= formatItemString %></input>
+                <%
+                      out.print("</li>");
+                     }
                 %> 
             </ul>
             </li>
@@ -60,52 +69,38 @@
                     <input type="checkbox" name="entree" value="<%= 0%>"/><%= 0%></input>
                     <%                         
                         //    out.print("</li>");
-                        
                     %>       
                 </ul>
             </li>
             <li><a href="#"><span>Dessert</span></a>
                 <ul>
                     <%                
-                      
-                        
-                        
                          //   out.print("<li>");
                     %>
                     <input type="checkbox" name="dessert" value="<%= 0%>"/><%= 0%></input>
                     <%                          
-                          //  out.print("</li>");
-                        
+                          //  out.print("</li>");  
                     %>         
                 </ul>
             </li>  
             <li><a href="#"><span>Specials</span></a>
             <ul>
                 <%                    
-                        
-                    
-                   
                       //  out.print("<li>");
                 %>
                 <input type="checkbox" name="special" value="<%= 0%>"/><%= 0%></input>
-                <%
-                       
+                <%                       
                       //  out.print("</li>");
-                    
-
                 %>
             </ul>
             <li><a href="#"><span>Drinks</span></a>             
             <ul>
-                <% 
-                    
-                    
+                <%   
                        // out.print("<li>");
                 %>
                 <input type="checkbox" name="drink" value="<%= 0 %>"/><%= 0 %></input>
                 <%
-                       // out.print("</li>");
-                     
+                       // out.print("</li>");   
                 %> 
             </ul>
             </li>

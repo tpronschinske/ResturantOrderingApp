@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.BillCalculator;
 import model.DataAccessException;
-import model.RestaurantMenuService;
+import model.MenuService;
 
 
 
@@ -46,7 +46,7 @@ public class MainController extends HttpServlet {
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
         HttpSession session = request.getSession();
-        RestaurantMenuService rms = new RestaurantMenuService();
+        MenuService rms = new MenuService();
         
         
         List<String> orderedItems = new ArrayList<>();
@@ -71,6 +71,7 @@ public class MainController extends HttpServlet {
         session.setAttribute("billTax", billCalculator.getRoundedTax());
         session.setAttribute("billTotalPlusTax", billCalculator.getBillTotalPlusTax());
         
+      
     
           
         response.sendRedirect(RESULT_PAGE);
