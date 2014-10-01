@@ -16,13 +16,21 @@
         <link href="Css/style.css" rel="stylesheet" type="text/css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
           <script type="text/javascript">
-        function calculateTip() {
-            var tip = $('#tipBox').val();
-            var bill = $('#bill').val();
-            var total_bill = Number(bill) + Number(tip);
-            $('#totalPlusTip').val(total_bill.toFixed(2));
-           }
-          $('#tipForm').submit(calculateTip);
+          $(document).ready(function(){
+                 
+              var bill =  $('#bill').text();
+              var billFloat = parseFloat(bill);
+              var tip = $('#tipBox').val();
+              var tipFloat = parseFloat(tip);
+              var billTotal = tipFloat + billFloat;
+  
+            $("#calculate").click(function() {
+              $("#totalPlusTip").text(billTotal);
+             
+              });
+            });
+            
+
         </script>
     </head>
     
@@ -44,12 +52,12 @@
         </p>
         
         <form id="tipForm" name="tipForm">
-         Please Enter Tip Amount:<input id ="tipBox" type="text"/><br />
-         <input type="submit" value="Submit Tip"/>
+         Please Enter Tip Amount:<input id="tipBox" type="text"/><br />
+         <button id="calculate" type="button">Calculate Tip</button> 
             
-                <p>Total Plus Tip:$</p>     
+         <p>Total Plus Tip:$ <span id="totalPlusTip"></span></p>     
                 
-                <p id="totalPlusTip"></p>
+            
             </form>    
         
       

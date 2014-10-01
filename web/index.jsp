@@ -3,17 +3,16 @@
     Created on : Sep 11, 2014, 9:02:23 PM
     Author     : Travis
 --%>
+    <%
+                     MenuService ms = new MenuService();
+                     MenuItem mi = new MenuItem();
+    %>
 
+<%@page import="model.MenuService"%>
 <%@page import="model.MenuItem"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="model.RestaurantMenuService"%>
-<%@page import="controller.MainController"%>
-<%
-     RestaurantMenuService ms = new RestaurantMenuService();
- %>
-                
-
+<%@page import="controller.MainController"%>        
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,19 +41,14 @@
             <li><a href="#"><span>Appetizer</span></a>             
             <ul>
                 <%
-                    RestaurantMenuService rms = new RestaurantMenuService();
+                     String app = "appetizer";
+                     List<MenuItem> appetizer = ms.getMenuItemsByCategory(app);
 
-                    List<String> orderedItems = new ArrayList<>();
-
-                    orderedItems.add(rms.getAllMenuItems().toString());
-
-                    /* formats array items - used for output on the order - page */
-                    String formatItemString = orderedItems.toString();         
-                    //   out.print("<li>");
-                    for (int i = 0; i < formatItemString.length(); i++) {
-                        out.print("<li>");
+                    for(int i = 0; i < appetizer.size(); i++) {
+                       String appetizerItem = appetizer.get(i).itemName + " " + appetizer.get(i).itemPrice;
+                       out.print("<li>");
                 %>
-                <input type="checkbox" name="item" value="<%= formatItemString %>"/><%= formatItemString %></input>
+                <input type="checkbox" name="item" value="<%= appetizerItem %>"/><%= appetizerItem %></input>
                 <%
                       out.print("</li>");
                      }
@@ -64,43 +58,63 @@
             <li><a href="#"><span>Entree</span></a>
                 <ul>
                     <%
-                       //     out.print("<li>");
+                    String entreeString = "entree";
+                    List<MenuItem> entree = ms.getMenuItemsByCategory(entreeString);
+                    for(int x = 0; x < entree.size(); x++) {
+                        String entreeItem = entree.get(x).itemName + " " + entree.get(x).itemPrice;
+                        out.print("<li>");
                     %>
-                    <input type="checkbox" name="entree" value="<%= 0%>"/><%= 0%></input>
+                    <input type="checkbox" name="entree" value="<%= entreeItem %>"/><%= entreeItem %></input>
                     <%                         
-                        //    out.print("</li>");
+                            out.print("</li>");
+                    }
                     %>       
                 </ul>
             </li>
             <li><a href="#"><span>Dessert</span></a>
                 <ul>
                     <%                
-                         //   out.print("<li>");
+                    String dessertString = "dessert";
+                    List<MenuItem> dessert = ms.getMenuItemsByCategory(dessertString);
+                    for(int x = 0; x < dessert.size(); x++) {
+                        String dessertItem = dessert.get(x).itemName + " " + dessert.get(x).itemPrice;
+                           out.print("<li>");
                     %>
-                    <input type="checkbox" name="dessert" value="<%= 0%>"/><%= 0%></input>
+                    <input type="checkbox" name="dessert" value="<%= dessertItem %>"/><%= dessertItem %></input>
                     <%                          
-                          //  out.print("</li>");  
+                            out.print("</li>"); 
+                    }
                     %>         
                 </ul>
             </li>  
             <li><a href="#"><span>Specials</span></a>
             <ul>
-                <%                    
-                      //  out.print("<li>");
+                <%       
+                    String specialString = "special";
+                    List<MenuItem> special = ms.getMenuItemsByCategory(specialString);
+                    for(int x = 0; x < special.size(); x++) {
+                        String specialItem = special.get(x).itemName + " " + special.get(x).itemPrice;
+                        out.print("<li>");
                 %>
-                <input type="checkbox" name="special" value="<%= 0%>"/><%= 0%></input>
+                <input type="checkbox" name="special" value="<%= specialItem %>"/><%= specialItem %></input>
                 <%                       
-                      //  out.print("</li>");
+                        out.print("</li>");
+                    }
                 %>
             </ul>
             <li><a href="#"><span>Drinks</span></a>             
             <ul>
                 <%   
-                       // out.print("<li>");
+                    String drinkString = "drink";
+                    List<MenuItem> drink = ms.getMenuItemsByCategory(drinkString);
+                    for(int x = 0; x < drink.size(); x++) {
+                        String drinkItem = drink.get(x).itemName + " " + drink.get(x).itemPrice;
+                        out.print("<li>");
                 %>
-                <input type="checkbox" name="drink" value="<%= 0 %>"/><%= 0 %></input>
+                <input type="checkbox" name="drink" value="<%= drinkItem %>"/><%= drinkItem %></input>
                 <%
-                       // out.print("</li>");   
+                        out.print("</li>"); 
+                    }
                 %> 
             </ul>
             </li>

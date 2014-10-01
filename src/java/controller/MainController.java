@@ -47,17 +47,26 @@ public class MainController extends HttpServlet {
         String RESULT_PAGE = "order-page.jsp";
         HttpSession session = request.getSession();
         MenuService rms = new MenuService();
-        
-        
-        List<String> orderedItems = new ArrayList<>();
-        try {
-            orderedItems.add(rms.getAllMenuItems().toString());
-            } 
-        catch (DataAccessException ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-  
+        String[] appetizerItem = request.getParameterValues("item");
+        String[] entreeItem = request.getParameterValues("entree");
+        String[] dessertItem = request.getParameterValues("dessert");
+        String[] specialItem = request.getParameterValues("special");
+        String[] drinkItem = request.getParameterValues("drink");
 //        /* formats array items - used for output on the order - page */
+        
+         List<String> orderedItems = new ArrayList<>();
+         orderedItems.add(Arrays.toString(appetizerItem));
+         orderedItems.add(Arrays.toString(entreeItem));
+         orderedItems.add(Arrays.toString(dessertItem));
+         orderedItems.add(Arrays.toString(specialItem));
+         orderedItems.add(Arrays.toString(drinkItem));
+         
+        for (Iterator<String> it = orderedItems.iterator(); it.hasNext();) {
+            String element = it.next();
+            if ("null".equals(element)) {
+                it.remove();
+            }
+        }
         String formatString = orderedItems.toString()
         .replace(",", "<br>")  //remove the commas
         .replace("[", "")  //remove the right bracket

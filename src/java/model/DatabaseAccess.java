@@ -27,7 +27,7 @@ public interface DatabaseAccess {
 
     public abstract Map getRecordByID(String table, String primaryKeyField, Object keyValue, boolean closeConnection)
             throws SQLException, Exception;
-
+    
     public abstract boolean insertRecord(String tableName, List colDescriptors, List colValues, boolean closeConnection)
             throws SQLException, Exception;
 

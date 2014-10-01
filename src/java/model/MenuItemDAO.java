@@ -10,6 +10,7 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import java.util.Map;
 public class MenuItemDAO implements IMenuItemDAO {
     private static final String FIND_ALL_MENUITEMS =
             "SELECT * FROM menu_item";
+    private static final String FIND_ITEMS_BY_CATEGORY = "SELECT item_name, price FROM menu_item WHERE category = ";
     private DatabaseAccess db;
 
     public MenuItemDAO() {
@@ -127,30 +129,49 @@ public class MenuItemDAO implements IMenuItemDAO {
 
         return records;
     }
-//      @Override
-//    public MenuItem getMenuItemsByCategory(String category)throws DataAccessException {
-//       this.openLocalDbConnection();
-//        
-//        Map rec;
-//        try {
-//            rec = db.getRecordByID("MENUITEMS", "CATEGORY", category, true);
-//        } catch (SQLException e1) {
-//            throw new DataAccessException(e1.getMessage(), e1);
-//
-//        } catch (Exception e2) {
-//            throw new DataAccessException(e2.getMessage(), e2);
-//        }
-//        
-//        MenuItem menuItem = new MenuItem();
-//        menuItem.setId(new Long(rec.get("menu_item_id").toString()));
-//        menuItem.setItemName(rec.get("item_name").toString());
-//        menuItem.setItemPrice(rec.get("price").toString());
-//        menuItem.setCategory(rec.get("category").toString());
-//        
-//
-//        return menuItem;
-//    }
-//    
+    
+    @Override
+    public List<MenuItem> getMenuItemsByCategory(String category)throws DataAccessException {
+       this.openLocalDbConnection();
+        
+        List<Map> rawData = new ArrayList<Map>();
+        List<MenuItem> records = new ArrayList<MenuItem>();
+        
+        try {
+            rawData = db.findRecords(FIND_ITEMS_BY_CATEGORY + "'" + category + "'" , true);
+        } catch (SQLException e1) {
+            throw new DataAccessException(e1.getMessage(), e1);
+
+        } catch (Exception e2) {
+            throw new DataAccessException(e2.getMessage(), e2);
+        }
+        
+        MenuItem menuItem = null;
+        
+        for(Map m : rawData){
+            menuItem = new MenuItem();
+            
+//            String id = m.get("menu_item_id").toString();
+//            menuItem.setId(new Long(id));
+            
+            String itemName = m.get("item_name").toString();
+            menuItem.setItemName(itemName);
+            
+            String price = m.get("price").toString();
+            menuItem.setItemPrice(price);
+//     
+//            String categoryItem = m.get("category").toString();
+//            menuItem.setCategory(categoryItem);
+//            
+            records.add(menuItem);
+        }
+
+        return records;
+    }
+    
+
+    
+
     @Override
     public DatabaseAccess getDb() {
         return this.db;
@@ -160,16 +181,17 @@ public class MenuItemDAO implements IMenuItemDAO {
     public void setDb(DatabaseAccess db) {
         this.db = db;
     }
-    
-    public static void main(String[] args) throws Exception {
-        MenuItemDAO dao = new MenuItemDAO (new DB_MySQL());
 
-        // Test get all menu items...
-        List<MenuItem> records = dao.getAllMenuItems();
-
-        System.out.println("Found Menu records...\n");
-          for (MenuItem menuItem : records) {
-            System.out.println(menuItem);
-        }
-    }
+//    public static void main(String[] args) throws Exception {
+//        MenuItemDAO dao = new MenuItemDAO (new DB_MySQL());
+//        List<MenuItem> drinks = dao.getMenuItemsByCategory("drink");
+//        for(int i = 0; i < drinks.size(); i++){
+//            System.out.println(drinks.get(i).itemName);
+//        }
+//        
+//        List<MenuItem> entree = dao.getMenuItemsByCategory("entree");
+//        for(int i = 0; i < entree.size(); i++){
+//            System.out.println(entree.get(i).itemName);
+//        }
+//    }
 }

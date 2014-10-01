@@ -12,10 +12,10 @@ import java.util.Objects;
  * @author Travis
  */
 public class MenuItem {
-    private Long id;
-    private String itemName;
-    private String itemPrice;
-    private String category;
+    public Long id;
+    public String itemName;
+    public String itemPrice;
+    public String category;
 
     
     public MenuItem() {
@@ -92,8 +92,10 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        return "MenuItem{" + "id=" + id + ", itemName=" + itemName + ", itemPrice=" + itemPrice + '}';
+        return "MenuItem{" + "id=" + id + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", category=" + category + '}';
     }
+
+ 
 
    
     
