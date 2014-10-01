@@ -12,10 +12,10 @@ import java.util.Objects;
  * @author Travis
  */
 public class MenuItem {
-    public Long id;
-    public String itemName;
-    public String itemPrice;
-    public String category;
+    private Long id;
+    private String itemName;
+    private String itemPrice;
+    private String category;
 
     
     public MenuItem() {

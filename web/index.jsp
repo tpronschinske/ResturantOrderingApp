@@ -45,7 +45,7 @@
                      List<MenuItem> appetizer = ms.getMenuItemsByCategory(app);
 
                     for(int i = 0; i < appetizer.size(); i++) {
-                       String appetizerItem = appetizer.get(i).itemName + " " + appetizer.get(i).itemPrice;
+                       String appetizerItem = appetizer.get(i).getItemName() + " " + appetizer.get(i).itemPrice;
                        out.print("<li>");
                 %>
                 <input type="checkbox" name="item" value="<%= appetizerItem %>"/><%= appetizerItem %></input>
@@ -61,7 +61,7 @@
                     String entreeString = "entree";
                     List<MenuItem> entree = ms.getMenuItemsByCategory(entreeString);
                     for(int x = 0; x < entree.size(); x++) {
-                        String entreeItem = entree.get(x).itemName + " " + entree.get(x).itemPrice;
+                        String entreeItem = entree.get(x).getItemName() + " " + entree.get(x).getItemPrice();
                         out.print("<li>");
                     %>
                     <input type="checkbox" name="entree" value="<%= entreeItem %>"/><%= entreeItem %></input>
@@ -77,7 +77,7 @@
                     String dessertString = "dessert";
                     List<MenuItem> dessert = ms.getMenuItemsByCategory(dessertString);
                     for(int x = 0; x < dessert.size(); x++) {
-                        String dessertItem = dessert.get(x).itemName + " " + dessert.get(x).itemPrice;
+                        String dessertItem = dessert.get(x).getItemName() + " " + dessert.get(x).getItemPrice();
                            out.print("<li>");
                     %>
                     <input type="checkbox" name="dessert" value="<%= dessertItem %>"/><%= dessertItem %></input>
@@ -93,7 +93,7 @@
                     String specialString = "special";
                     List<MenuItem> special = ms.getMenuItemsByCategory(specialString);
                     for(int x = 0; x < special.size(); x++) {
-                        String specialItem = special.get(x).itemName + " " + special.get(x).itemPrice;
+                        String specialItem = special.get(x).getItemName() + " " + special.get(x).getItemPrice();
                         out.print("<li>");
                 %>
                 <input type="checkbox" name="special" value="<%= specialItem %>"/><%= specialItem %></input>
@@ -108,7 +108,7 @@
                     String drinkString = "drink";
                     List<MenuItem> drink = ms.getMenuItemsByCategory(drinkString);
                     for(int x = 0; x < drink.size(); x++) {
-                        String drinkItem = drink.get(x).itemName + " " + drink.get(x).itemPrice;
+                        String drinkItem = drink.get(x).getItemName() + " " + drink.get(x).getItemPrice();
                         out.print("<li>");
                 %>
                 <input type="checkbox" name="drink" value="<%= drinkItem %>"/><%= drinkItem %></input>
