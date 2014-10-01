@@ -45,7 +45,7 @@
                      List<MenuItem> appetizer = ms.getMenuItemsByCategory(app);
 
                     for(int i = 0; i < appetizer.size(); i++) {
-                       String appetizerItem = appetizer.get(i).getItemName() + " " + appetizer.get(i).itemPrice;
+                       String appetizerItem = appetizer.get(i).getItemName() + " " + appetizer.get(i).getItemPrice();
                        out.print("<li>");
                 %>
                 <input type="checkbox" name="item" value="<%= appetizerItem %>"/><%= appetizerItem %></input>
