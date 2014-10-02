@@ -35,6 +35,7 @@ public class DB_MySQL implements DatabaseAccess {
 	
 	
 
+    @Override
 	public void openConnection(String driverClassName, String url, String username, String password) 
 	throws IllegalArgumentException, ClassNotFoundException, SQLException
 	{
@@ -46,10 +47,12 @@ public class DB_MySQL implements DatabaseAccess {
 		conn = DriverManager.getConnection(url, username, password);
 	}
 		
+    @Override
 	public void closeConnection() throws SQLException {
 		conn.close();
 	}
 
+    @Override
 	public List findRecords(String sqlString, boolean closeConnection) 
 	throws SQLException, Exception
 	{
@@ -97,6 +100,7 @@ public class DB_MySQL implements DatabaseAccess {
 
 
 
+    @Override
 	public Map getRecordByID(String table, String primaryKeyField, Object keyValue, boolean closeConnection)
 	throws SQLException, Exception
 	{
@@ -147,6 +151,7 @@ public class DB_MySQL implements DatabaseAccess {
 	}
 
 
+    @Override
 	public boolean insertRecord(String tableName, List colDescriptors, List colValues, boolean closeConnection)
 	throws SQLException, Exception
 	{
@@ -202,6 +207,7 @@ public class DB_MySQL implements DatabaseAccess {
 
 
 
+    @Override
 	public int updateRecords(String tableName, List colDescriptors, List colValues,
 							 String whereField, Object whereValue, boolean closeConnection)
 							 throws SQLException, Exception
@@ -267,6 +273,7 @@ public class DB_MySQL implements DatabaseAccess {
 
 
 	
+    @Override
 	public int deleteRecords(String tableName, String whereField, Object whereValue, boolean closeConnection)
 	throws SQLException, Exception
 	{

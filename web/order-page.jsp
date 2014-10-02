@@ -23,11 +23,10 @@
               var tip = $('#tipBox').val();
               var tipFloat = parseFloat(tip);
               var billTotal = tipFloat + billFloat;
-  
+                                                    
             $("#calculate").click(function() {
-              $("#totalPlusTip").text(billTotal);
-             
-              });
+               $("#totalPlusTip").text(billTotal);
+               });
             });
             
 

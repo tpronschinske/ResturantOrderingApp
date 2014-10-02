@@ -9,8 +9,6 @@ package model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -134,8 +132,8 @@ public class MenuItemDAO implements IMenuItemDAO {
     public List<MenuItem> getMenuItemsByCategory(String category)throws DataAccessException {
        this.openLocalDbConnection();
         
-        List<Map> rawData = new ArrayList<Map>();
-        List<MenuItem> records = new ArrayList<MenuItem>();
+        List<Map> rawData = new ArrayList<>();
+        List<MenuItem> records = new ArrayList<>();
         
         try {
             rawData = db.findRecords(FIND_ITEMS_BY_CATEGORY + "'" + category + "'" , true);
@@ -150,28 +148,19 @@ public class MenuItemDAO implements IMenuItemDAO {
         
         for(Map m : rawData){
             menuItem = new MenuItem();
-            
-//            String id = m.get("menu_item_id").toString();
-//            menuItem.setId(new Long(id));
-            
+           
             String itemName = m.get("item_name").toString();
             menuItem.setItemName(itemName);
             
             String price = m.get("price").toString();
             menuItem.setItemPrice(price);
-//     
-//            String categoryItem = m.get("category").toString();
-//            menuItem.setCategory(categoryItem);
-//            
+
             records.add(menuItem);
         }
 
         return records;
     }
-    
-
-    
-
+ 
     @Override
     public DatabaseAccess getDb() {
         return this.db;

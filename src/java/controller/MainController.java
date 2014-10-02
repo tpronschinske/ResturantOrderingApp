@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.BillCalculator;
 import model.DataAccessException;
+import model.MenuItem;
 import model.MenuService;
 
 
@@ -45,15 +46,26 @@ public class MainController extends HttpServlet {
 
         response.setContentType("text/html");
         String RESULT_PAGE = "order-page.jsp";
+        
         HttpSession session = request.getSession();
-        MenuService rms = new MenuService();
+        MenuService ms = new MenuService();
+        
         String[] appetizerItem = request.getParameterValues("item");
         String[] entreeItem = request.getParameterValues("entree");
         String[] dessertItem = request.getParameterValues("dessert");
         String[] specialItem = request.getParameterValues("special");
         String[] drinkItem = request.getParameterValues("drink");
-//        /* formats array items - used for output on the order - page */
         
+        
+        String app = "appetizer";
+        try {
+            List<MenuItem> appetizer = ms.getMenuItemsByCategory(app);
+            
+        } catch (DataAccessException ex) {
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        /* formats array items - used for output on the order - page */
          List<String> orderedItems = new ArrayList<>();
          orderedItems.add(Arrays.toString(appetizerItem));
          orderedItems.add(Arrays.toString(entreeItem));
@@ -67,6 +79,7 @@ public class MainController extends HttpServlet {
                 it.remove();
             }
         }
+        
         String formatString = orderedItems.toString()
         .replace(",", "<br>")  //remove the commas
         .replace("[", "")  //remove the right bracket
@@ -74,15 +87,14 @@ public class MainController extends HttpServlet {
         .trim();           //remove trailing spaces from partially initialized
 //        
         BillCalculator billCalculator = new BillCalculator(orderedItems, formatString);
-        /* setting attributes for the page */
+        
+        
+        /* setting attributes for the order page */
         session.setAttribute("orderedItems", formatString);
         session.setAttribute("billTotal", billCalculator.getFinalCalculateBillTotal());
         session.setAttribute("billTax", billCalculator.getRoundedTax());
         session.setAttribute("billTotalPlusTax", billCalculator.getBillTotalPlusTax());
-        
-      
-    
-          
+
         response.sendRedirect(RESULT_PAGE);
         
 

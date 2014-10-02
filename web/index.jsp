@@ -5,14 +5,15 @@
 --%>
     <%
                      MenuService ms = new MenuService();
-                     MenuItem mi = new MenuItem();
+                     MenuItem mi = new MenuItem();                    
+                     String db = this.getServletContext().getInitParameter("database");
+                    
     %>
 
 <%@page import="model.MenuService"%>
 <%@page import="model.MenuItem"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="controller.MainController"%>        
+<%@page import="java.util.List"%>     
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -43,7 +44,7 @@
                 <%
                      String app = "appetizer";
                      List<MenuItem> appetizer = ms.getMenuItemsByCategory(app);
-
+                    
                     for(int i = 0; i < appetizer.size(); i++) {
                        String appetizerItem = appetizer.get(i).getItemName() + " " + appetizer.get(i).getItemPrice();
                        out.print("<li>");

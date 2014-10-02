@@ -6,23 +6,18 @@
 
 package model;
 
-import controller.MainController;
-import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Travis
  */
 public class MenuService {
     
-    private IMenuItemDAO menuDao;
-
+    private final IMenuItemDAO menuDao;
+    
     
     public MenuService() {
+      
         DatabaseAccess db = new DB_MySQL();
         menuDao = new MenuItemDAO(db);
     }
@@ -34,15 +29,6 @@ public class MenuService {
     public List<MenuItem> getMenuItemsByCategory(String category) throws DataAccessException {      
         return menuDao.getMenuItemsByCategory(category);
     }
-
-
-
-
-                
-        // for converting decimal from database
-//        BigDecimal bg = new BigDecimal();
-//        bg.doubleValue();
-        
         
     }
     
